@@ -14,7 +14,7 @@ pipeline {
                 expression { params.dry_run == false }
             }
                 steps {
-                    sh 'python3 main.py >> output.txt'
+                    sh 'python3 main.py'
             }
         }
         
