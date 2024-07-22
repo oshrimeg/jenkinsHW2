@@ -11,10 +11,10 @@ pipeline {
         }
         stage('Run') {
             when{
-                expression { params.dry_run = false }
+                expression { params.dry_run == false }
             }
-            steps {
-              sh 'python3 main.py >> output.txt'
+                steps {
+                    sh 'python3 main.py >> output.txt'
             }
         }
         
