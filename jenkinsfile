@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters{
+        booleanParam(defaultValue: false, description: 'dry_run?', name: 'dry_run')
+    }
     stages {
         stage('Get code from github') {
             steps {
@@ -7,10 +10,14 @@ pipeline {
             }
         }
         stage('Run') {
+            when{
+                expression { params.dry_run = false }
+            }
             steps {
               sh 'python3 main.py >> output.txt'
             }
         }
+        
         
     }
 }
